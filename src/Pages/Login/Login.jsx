@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 import { AiOutlineGoogle, AiOutlinePlus } from "react-icons/ai";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,6 +8,19 @@ import "swiper/css/navigation";
 // import "./Login.css";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const Login = () => {
+  const [erros, setErros] = useState("");
+  const emailref = useRef(null);
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const pass = form.pass.value;
+    console.log(email, pass);
+  };
+  const handleForgotPass = () => {
+    const email = emailref.current.value;
+    console.log(email);
+  };
   return (
     <div className="">
       <div className="flex flex-col h-[460px] lg:flex-row">
@@ -36,9 +49,12 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="lg:w-[500px] sma:h-[430px] flex ">
+        <div className="lg:w-[500px] cust:h-[440px] sma:h-[430px] flex ">
           {" "}
-          <div className="card sma:mt-6 flex sma:w-[320px] mx-auto lg:w-[400px] ring ring-[#8c52ff] rounded-lg flex-shrink-0  shadow-2xl ">
+          <form
+            onSubmit={handleLogin}
+            className="card sma:mt-6 flex sma:w-[320px] cust:w-[350px] mx-auto lg:w-[400px] ring ring-[#8c52ff] rounded-lg flex-shrink-0  shadow-2xl "
+          >
             <div className="card-body">
               <div className="form-control">
                 <label className="label sma:pt-2 ps-0 pb-2">
@@ -49,7 +65,9 @@ const Login = () => {
                 <input
                   type="text"
                   placeholder="@mail.com"
-                  className="input input-bordered outline-dotted outline-[#8c52ff] sma:h-10 h-14 border-[#8c52ff] rounded-lg"
+                  name="email"
+                  ref={emailref}
+                  className="input input-bordered outline-dotted outline-[#8c52ff] sma:h-10 cust:h-12 h-14 border-[#8c52ff] rounded-lg"
                 />
               </div>
               <div className="form-control">
@@ -61,10 +79,11 @@ const Login = () => {
                 <input
                   type="text"
                   placeholder="pAssw0rd"
-                  className="input sma:h-10 input-bordered  outline-dotted  outline-[#8c52ff] h-14 border-[#8c52ff] rounded-lg"
+                  name="pass"
+                  className="input sma:h-10 input-bordered  outline-dotted cust:h-12 outline-[#8c52ff] h-14 border-[#8c52ff] rounded-lg"
                 />{" "}
                 <div className="my-2">
-                  <label className="  ">
+                  <label onClick={handleForgotPass} className="  ">
                     <a
                       href="#"
                       className="label-text-alt text-base text-[#8c52ff]  link link-hover"
@@ -87,10 +106,10 @@ const Login = () => {
                 <button className="text-xl link-hover">SignUp</button>
               </h1>
             </div>
-          </div>
+          </form>
         </div>
 
-        <div className="lg:ms-14 cust:ms-4 mt-5">
+        <div className="lg:ms-14 lg:hidden  mt-5">
           <h1 className="text-3xl text-center  cust:text-2xl text-[#8c52ff] font-Anton font-medium">
             Or login with
           </h1>
