@@ -1,14 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import img from "../../assets/20230915_235212_0000.png";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <Activelinknk> for styles
 import Activelink from "./activeRoute";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 // ..
 AOS.init();
 const Nav = () => {
   const [navOpen, setNavOpen] = useState(false);
   console.log(navOpen);
-
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+  const { creatUser, Update, glog, user, logout } = useContext(AuthContext);
+  const signOUt = () => {
+    logout().then(() => {
+      Toast.fire({
+        icon: "success",
+        title: `User Logged Out`,
+      });
+    });
+  };
   const navbar = (
     <>
       {" "}
@@ -24,24 +45,40 @@ const Nav = () => {
       >
         <a>All Toys</a>
       </Activelink>
-      <Activelink
-        to="/MyToys"
-        className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
-      >
-        <a>My Toys</a>
-      </Activelink>
-      <Activelink className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold">
-        <a>Add A Toy</a>
-      </Activelink>
+      {user ? (
+        <>
+          {" "}
+          <Activelink
+            to="/MyToys"
+            className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
+          >
+            <a>My Toys</a>
+          </Activelink>
+          <Activelink className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold">
+            <a>Add A Toy</a>
+          </Activelink>
+        </>
+      ) : (
+        ""
+      )}
       <Activelink className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold">
         <a>Blogs</a>
       </Activelink>
-      <Activelink
-        to="/Login"
-        className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
-      >
-        <a>Login</a>
-      </Activelink>
+      {user ? (
+        <button
+          onClick={signOUt}
+          className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
+        >
+          <a>Logout</a>
+        </button>
+      ) : (
+        <Activelink
+          to="/Login"
+          className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
+        >
+          <a>Login</a>
+        </Activelink>
+      )}
     </>
   );
 

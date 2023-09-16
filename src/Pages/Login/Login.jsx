@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import { AiOutlineGoogle, AiOutlinePlus } from "react-icons/ai";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,7 +7,23 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import "./Login.css";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 const Login = () => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+  const { creatUser, Update, glog, user, signI, setUser } =
+    useContext(AuthContext);
   const [erros, setErros] = useState("");
   const emailref = useRef(null);
   const handleLogin = (event) => {
@@ -15,17 +31,27 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const pass = form.pass.value;
+    signI(email, pass).then(() => {});
     console.log(email, pass);
   };
   const handleForgotPass = () => {
     const email = emailref.current.value;
     console.log(email);
   };
+  const glogin = () => {
+    glog(() => {
+      Toast.fire({
+        icon: "success",
+        title: `new user created`,
+      });
+      console.log("user");
+    }).catch((error) => {});
+  };
   return (
     <div className="">
       <div className="flex flex-col h-[460px] lg:flex-row">
         <div className="lg:w-[600px]">
-          <div className="cust:mt-6 sma:mt-6 mt-14 ">
+          <div className="cust:mt-2 sma:mt-6 mt-14 ">
             <h1 className="text-4xl cust:ms-[80px] sma:ms-[60px] lg:text-5xl ms-5 font-Barlow font-bold uppercase text-[#8c52ff]">
               Login to
             </h1>
@@ -41,7 +67,10 @@ const Login = () => {
               Or login with
             </h1>
             <h1 className="hidden lg:block mt-8 ms-8 lg:w-[400px] text-[#8c52ff] text-xl">
-              <button className="btn focus:text-black focus:bg-[#8c52ff] outline-[#8c52ff] text-[#8c52ff] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow tracking-widest text-2xl w-full h-16">
+              <button
+                onClick={glogin}
+                className="btn focus:text-black focus:bg-[#8c52ff] outline-[#8c52ff] text-[#8c52ff] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow tracking-widest text-2xl w-full h-16"
+              >
                 <AiOutlineGoogle className="text-2xl" />
                 Google
               </button>
@@ -103,7 +132,9 @@ const Login = () => {
             <div>
               <h1 className="text-[#8c52ff] text-end p-2">
                 New In Toodle Toys?{" "}
-                <button className="text-xl link-hover">SignUp</button>
+                <Link to="/Register" className="text-xl link-hover">
+                  Register
+                </Link>
               </h1>
             </div>
           </form>
