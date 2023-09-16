@@ -10,31 +10,32 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const Banner = () => {
   return (
     <div className="">
-      <div className="flex">
-        <div className="w-[700px]">
+      <div className="flex flex-col lg:flex-row">
+        <div className="lg:w-[700px]">
           <div className=" mt-14 ">
-            <h1 className="text-5xl ms-5 font-Barlow font-bold uppercase text-[#8c52ff]">
+            <h1 className="text-4xl lg:text-5xl ms-5 font-Barlow font-bold uppercase text-[#8c52ff]">
               Welcome to
             </h1>
-            <h1 className="tracking-wide text-7xl ms-12 font-Anton font-extrabold uppercase text-[#8c52ff]">
-              "Toodle toys"
+            <h1 className="tracking-wide sma:text-5xl lg:text-7xl cust:text-5xl sma:ms-[100px] lg:ms-12 font-Anton font-extrabold uppercase text-[#8c52ff]">
+              Toodle toys
             </h1>
-            <h1 className="text-5xl text-end me-20 font-Barlow font-bold uppercase text-[#8c52ff]">
+            <h1 className="text-5xl lg:text-end lg:me-20 ms-10 lg:ms-0 font-Barlow font-bold uppercase text-[#8c52ff]">
               Store
             </h1>
           </div>
-          <div className="ms-14 mt-2">
-            <h1 className="text-3xl text-[#8c52ff] font-Barlow font-medium">
+          <div className="lg:ms-14 cust:ms-4 mt-2">
+            <h1 className="text-2xl text-end me-4 cust:text-2xl text-[#8c52ff] font-Barlow font-medium">
               An Action figure toy store
             </h1>
-            <h1 className="mt-8 ms-8 w-[400px] text-[#8c52ff] text-xl">
+            <h1 className="hidden lg:block mt-8 ms-8 lg:w-[400px] text-[#8c52ff] text-xl">
               Join the Toodle Toys family today and make cherished memories with
               our enchanting range of toys. Explore our website and discover the
               perfect playmate for your little one.
             </h1>
           </div>
         </div>
-        <div className="w-[500px] ">
+
+        <div className="lg:w-[500px] ">
           <Swiper
             spaceBetween={50}
             slidesPerView={1}
@@ -118,6 +119,13 @@ const Banner = () => {
               </div>
             </SwiperSlide>
           </Swiper>
+        </div>
+        <div>
+          <h1 className=" lg:hidden cust:mt-1 ms-8 lg:w-[400px] text-[#8c52ff] ">
+            Join the Toodle Toys family today and make cherished memories with
+            our enchanting range of toys. Explore our website and discover the
+            perfect playmate for your little one.
+          </h1>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ export default {
     extend: {
       screens: {
         cust: "393px",
+        sma: "375px",
       },
       fontFamily: {
         Barlow: ["Barlow"],
