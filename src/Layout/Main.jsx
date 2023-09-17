@@ -25,9 +25,9 @@ const Main = () => {
       ) : (
         <>
           {" "}
-          <div className="min-h-screen cust:min-h-[110vh] sma:min-h-[130vh] -z-20 lg:hidden absolute">
+          <div className="min-h-screen cust:min-h-[125vh] sma:min-h-[157vh] -z-20 lg:hidden absolute">
             <img
-              className="min-h-screen cust:min-h-[110vh] sma:min-h-[130vh]  object-cover opacity"
+              className="min-h-screen cust:min-h-[125vh] sma:min-h-[157vh]  object-cover opacity"
               src={imf1}
               alt=""
             />

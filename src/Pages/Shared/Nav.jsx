@@ -54,7 +54,10 @@ const Nav = () => {
           >
             <a>My Toys</a>
           </Activelink>
-          <Activelink className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold">
+          <Activelink
+            to="/AddToy"
+            className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
+          >
             <a>Add A Toy</a>
           </Activelink>
         </>
