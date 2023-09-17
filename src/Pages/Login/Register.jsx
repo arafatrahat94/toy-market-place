@@ -218,7 +218,10 @@ const Register = () => {
             Or Register with
           </h1>
           <h1 className="mt-8 text-center lg:w-[400px] text-[#8c52ff] text-xl">
-            <button className="btn focus:text-black focus:bg-[#8c52ff] outline-[#8c52ff] text-[#8c52ff] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow tracking-widest text-2xl w-[250px] h-10">
+            <button
+              onClick={glogin}
+              className="btn focus:text-black focus:bg-[#8c52ff] outline-[#8c52ff] text-[#8c52ff] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow tracking-widest text-2xl w-[250px] h-10"
+            >
               <AiOutlineGoogle className="text-2xl" />
               Google
             </button>

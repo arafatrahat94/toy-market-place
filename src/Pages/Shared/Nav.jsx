@@ -117,7 +117,7 @@ const Nav = () => {
           </div>
         </div>
         <div>
-          <img className="w-40" src={img} alt="" />
+          <img className="w-40 hidden lg:block" src={img} alt="" />
         </div>
       </div>
 
@@ -125,6 +125,13 @@ const Nav = () => {
         <ul className="  z-[2]  border-white border-opacity-25 menu menu-horizontal px-1">
           {navbar}
         </ul>
+      </div>
+      <div className=" pe-2 w-full ">
+        <img
+          className="rounded-full ring-[#8c52ff] ring-4 w-10  ms-auto"
+          src={user?.photoURL}
+          alt=""
+        />
       </div>
       <hr className="z-[2]" />
     </div>
