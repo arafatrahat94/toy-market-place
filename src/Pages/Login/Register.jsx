@@ -25,7 +25,7 @@ const Register = () => {
 
   const [erros, setErros] = useState("");
   const emailref = useRef(null);
-  const { creatUser, Update, glog, user } = useContext(AuthContext);
+  const { creatUser, setUser, Update, glog, user } = useContext(AuthContext);
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -54,6 +54,7 @@ const Register = () => {
                 title: `${error.message.split("Firebase:").join("")}`,
               });
             });
+        setUser([]);
         Toast.fire({
           icon: "success",
           title: `new user created`,
@@ -64,7 +65,7 @@ const Register = () => {
           email: user.email,
           photo: user.photoURL,
         };
-        fetch(`http://localhost:8001/User`, {
+        fetch(`https://toys-server-3th00c4hc-arafathsensei94.vercel.app/User`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
