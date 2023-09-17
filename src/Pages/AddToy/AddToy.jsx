@@ -1,18 +1,77 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddToy = () => {
+  const { user } = useContext(AuthContext);
+  const { email } = user;
+  const [value, setValue] = useState(10); // Initial value for the range input
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+  };
+  const getdata = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const Name = form.name.value;
+    const MadeIn = form.MadeIn.value;
+    const Recommended_Age = form.Recommended_Age.value;
+    const Price = form.Price.value;
+    const Description = form.Description.value;
+    const Category = form.Category.value;
+    const Quantity = value;
+    const Image_URL = form.Image_URL.value;
+    const data = {
+      Name: Name,
+      MadeIn: MadeIn,
+      Recommended_Age: Recommended_Age,
+      Price: Price,
+      Description: Description,
+      Category: Category,
+      Quantity: Quantity,
+      email: email,
+      Image_URL: Image_URL,
+    };
+    fetch(`http://localhost:8001/Addtoy`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        event.target.reset();
+        Toast.fire({
+          icon: "success",
+          title: `new toy added`,
+        });
+      });
+    console.log(data);
+  };
   return (
     <div className="">
-      <div className="grid lg:grid-cols-2 shadow-2xl shadow-black w-11/12 mx-auto rounded-2xl">
+      <form
+        onSubmit={getdata}
+        className="grid lg:grid-cols-2 shadow-2xl shadow-black w-11/12 mx-auto rounded-2xl"
+      >
         <div>
-          <div className="flex flex-col h-[510px] lg:flex-row">
-            <div className="lg:w-full  lg:ps-4 cust:h-[440px] sma:h-[430px] flex ">
+          <div className="flex flex-col lg:h-full  sma:h-[650px] cust:h-[690px] lg:flex-row">
+            <div className="lg:w-full  lg:ps-4 cust:h-[460px] sma:h-[560px] flex ">
               {" "}
-              <form
-                onSubmit={"handleLogin"}
-                className="card  flex sma:w-[320px] cust:w-[350px] mx-auto  lg:w-full  rounded-lg flex-shrink-0  shadow-2xl "
-              >
+              <div className="card  flex sma:w-[320px] cust:w-[350px] mx-auto  lg:w-full  rounded-lg flex-shrink-0  shadow-2xl ">
                 <div className="card-body p-2 lg:p-5 lg:flex lg:items-center lg:justify-center sma:p-0">
                   <div className="form-control mx-2">
                     <label className="label sma:pt-2 ps-0 pb-2">
@@ -23,9 +82,23 @@ const AddToy = () => {
                     <input
                       type="text"
                       placeholder="enter your toy name"
-                      name="email"
+                      name="name"
                       // ref={emailref}
-                      className="input input-bordered outline-dotted outline-[#8c52ff] sma:h-10 ps-2  lg:w-[400px] cust:h-12 h-14 border-[#8c52ff] rounded-lg"
+                      className="input input-bordered lg:outline-dotted outline-[#8c52ff] sma:h-10 ps-2  lg:w-[400px] cust:h-12 h-14 border-[#8c52ff] rounded-lg"
+                    />
+                  </div>
+                  <div className="form-control mx-2">
+                    <label className="label sma:pt-2 ps-0 pb-2">
+                      <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#8c52ff] ">
+                        Image url
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="paste the url"
+                      name="Image_URL"
+                      // ref={emailref}
+                      className="input input-bordered lg:outline-dotted outline-[#8c52ff] sma:h-10 ps-2  lg:w-[400px] cust:h-12 h-14 border-[#8c52ff] rounded-lg"
                     />
                   </div>
                   <div className="lg:flex lg:w-[400px] gap-x-4">
@@ -38,11 +111,12 @@ const AddToy = () => {
                       <input
                         type="text"
                         placeholder="Country Name"
-                        name="pass"
-                        className="input sma:h-10 input-bordered  outline-dotted cust:h-12  outline-[#8c52ff] h-14 lg:w-[190px] border-[#8c52ff] rounded-lg"
+                        name="MadeIn"
+                        className="input sma:h-10 input-bordered  lg:outline-dotted cust:h-12  outline-[#8c52ff] h-14 lg:w-[190px] border-[#8c52ff] rounded-lg"
                       />{" "}
                       <div className="my-2"></div>
                     </div>
+
                     <div className="form-control mx-2">
                       <label className="label ps-0 pb-2">
                         <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#8c52ff] ">
@@ -52,9 +126,29 @@ const AddToy = () => {
                       <input
                         type="text"
                         placeholder="Price"
-                        name="pass"
-                        className="input sma:h-10 input-bordered  outline-dotted cust:h-12 lg:w-[191px] outline-[#8c52ff] h-14 border-[#8c52ff] rounded-lg"
+                        name="Price"
+                        className="input sma:h-10 input-bordered  lg:outline-dotted cust:h-12 lg:w-[191px] outline-[#8c52ff] h-14 border-[#8c52ff] rounded-lg"
                       />{" "}
+                    </div>
+                  </div>
+                  <div className="mx-2">
+                    <label className="label ps-0 pb-2">
+                      <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#8c52ff] ">
+                        Quantity
+                      </span>
+                    </label>
+                    <div className="flex">
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        className="range w-[270px]"
+                        value={value}
+                        onChange={handleChange}
+                      />
+                      <div className="tooltip  bg-purple-600 w-[45px] text-black font-Anton">
+                        {value}
+                      </div>
                     </div>
                   </div>
                   <div className="lg:flex gap-x-4 mb-4 ">
@@ -67,27 +161,35 @@ const AddToy = () => {
                       <input
                         type="text"
                         placeholder="age"
-                        name="age"
-                        className="input sma:h-10 input-bordered  outline-dotted cust:h-12 lg:w-[191px] outline-[#8c52ff] h-14 border-[#8c52ff] rounded-lg"
+                        name="Recommended_Age"
+                        className="input sma:h-10 input-bordered  lg:outline-dotted cust:h-12 lg:w-[191px] outline-[#8c52ff] h-14 border-[#8c52ff] rounded-lg"
                       />{" "}
                     </div>
+
                     <div className="form-control  mx-2">
                       <label className="label ps-0 pb-2">
                         <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#8c52ff] ">
                           Category
                         </span>
                       </label>
-                      <input
-                        type="text"
-                        placeholder="Price"
-                        name="pass"
-                        className="input sma:h-10 input-bordered  outline-dotted cust:h-12 lg:w-[191px] outline-[#8c52ff]  h-14 border-[#8c52ff] rounded-lg"
-                      />{" "}
+
+                      <select
+                        name="Category"
+                        className="select select-secondary  lg:w-[191px] border-[#8c52ff] w-full"
+                      >
+                        <option disabled selected>
+                          Select Category
+                        </option>
+                        <option>Marvel</option>
+                        <option>Dc</option>
+                        <option>Anime</option>
+                        {/* <option>C#</option> */}
+                      </select>
                       <div className="my-2"></div>
                     </div>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
@@ -95,14 +197,11 @@ const AddToy = () => {
           <div className="flex  flex-col h-[460px] lg:flex-row">
             <div className="lg:w-[500px]   items-center justify-center  flex ">
               {" "}
-              <form
-                onSubmit={"handleLogin"}
-                className="card p-0 items-center flex sma:w-[320px] cust:w-[350px] mx-auto lg:w-[450px]   flex-shrink-0  shadow-2xl "
-              >
+              <div className="card p-0 items-center flex sma:w-[320px] cust:w-[350px] mx-auto lg:w-[450px]   flex-shrink-0  shadow-2xl ">
                 <div className="card-body lg:p-8 sma:p-0 w-[350px] lg:w-full ">
                   <div>
                     <textarea
-                      name=""
+                      name="Description"
                       placeholder="Enter Description Of Your Toy"
                       className="rounded-xl bg-transparent textarea-bordered textarea text-[#8c52ff] text-base lg:py-4 shadow shadow-[#8c52ff]  lg:mt-0 mx-auto lg:w-[384px] cust:w-[350px] w-[345px]"
                       id=""
@@ -110,16 +209,16 @@ const AddToy = () => {
                     ></textarea>
                   </div>
                   <div className="form-control  w-full mt-6">
-                    <button className="btn focus:text-black focus:bg-[#8c52ff] outline-[#8c52ff] text-[#8c52ff] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow tracking-widest sma:text-xl w-full  text-2xl  sma:h-10 h-16">
+                    <button className="btn focus:text-black focus:bg-[#8c52ff] outline-[#8c52ff] text-[#8c52ff] btn-circle btn-outline lg:outline-dotted uppercase font-bold font-Barlow tracking-widest sma:text-xl w-full  text-2xl  sma:h-10 h-16">
                       Upload
                     </button>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

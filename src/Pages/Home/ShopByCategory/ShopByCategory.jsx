@@ -98,12 +98,31 @@ const ShopByCategory = () => {
               {toys.map((x) => (
                 <>
                   <div className=" lg:w-[450px]     mx-auto rounded-3xl shadow  ">
-                    <div className="ring ring-[#8c52ff] m-4  rounded-[40px] lg:w-full">
+                    <div className="relative ring-4 ring-[#8c52ff] my-3 rounded-[40px] lg:w-full">
                       <img
-                        className="lg:w-[500px] w-[500px]  rounded-[40px] mx-auto object-cover"
+                        className="lg:w-[500px] w-[350px]  rounded-[40px] mx-auto object-cover"
                         src={x.Image_URL}
                         alt=""
                       />
+                      <div className="absolute top-[197px] lg:top-[265px] w-full  h-[100px]">
+                        <h1 className="font-Outfit tracking-wider lg:text-4xl sma:text-xl text-center">
+                          {x.Name}
+                        </h1>
+                        <h1 className="font-Barlow uppercase font-bold  tracking-wider lg:text-3xl sma:text-2xl text-center">
+                          {x.Category}
+                        </h1>
+                        <div className="flex gap-x-3 justify-center mt-2 items-center">
+                          <div className="    font-Barlow uppercase font-bold bg-gradient-to-r from-purple-600 glass  to-purple-400 text-black sma:w-[120px] lg:w-[110px] tracking-wider lg:py-2 lg:text-xl py-1 text-center">
+                            {x.Price}$
+                          </div>
+                          <div className="    font-Barlow uppercase font-bold bg-gradient-to-r from-purple-600 glass  to-purple-400 text-black sma:w-[120px] lg:w-[160px] tracking-wider lg:py-2 lg:text-xl py-1 text-center">
+                            Quantity:{x.Quantity}
+                          </div>
+                        </div>
+                        <div className="    font-Outfit mx-auto mt-2 uppercase glass sma:w-[120px] text-white rounded tracking-wider  py-2 text-center">
+                          View Now
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </>
