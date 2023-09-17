@@ -45,7 +45,7 @@ const Nav = () => {
       >
         <a>All Toys</a>
       </Activelink>
-      {user ? (
+      {user !== null ? (
         <>
           {" "}
           <Activelink
@@ -64,7 +64,7 @@ const Nav = () => {
       <Activelink className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold">
         <a>Blogs</a>
       </Activelink>
-      {user ? (
+      {user !== null ? (
         <button
           onClick={signOUt}
           className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"

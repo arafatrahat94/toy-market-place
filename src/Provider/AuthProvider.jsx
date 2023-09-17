@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
   //   create user
   const creatUser = (email, pass) => {
     setLoading(true);
+
     return createUserWithEmailAndPassword(auth, email, pass);
   };
   // update name and photourl
@@ -43,12 +44,13 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
       setLoading(false);
       if (currentUser && currentUser?.email) {
         const loggedUser = {
           email: currentUser.email,
         };
-        fetch(`http://localhost:8001/jwt`, {
+        fetch(`https://toys-server-3th00c4hc-arafathsensei94.vercel.app/jwt`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -58,7 +60,6 @@ const AuthProvider = ({ children }) => {
           .then((res) => res.json())
           .then((data) => localStorage.setItem("toy-access", data.token));
       } else localStorage.removeItem("toy-access");
-      setUser(currentUser);
     });
 
     return () => unsub();
