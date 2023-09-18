@@ -13,21 +13,21 @@ const Banner = () => {
       <div className="flex flex-col lg:flex-row">
         <div className="lg:w-[700px]">
           <div className=" mt-14 ">
-            <h1 className="text-4xl lg:text-5xl ms-5 font-Barlow font-bold uppercase text-[#8c52ff]">
+            <h1 className="text-4xl lg:text-5xl ms-5 font-Barlow font-bold uppercase text-[#FF2A2E]">
               Welcome to
             </h1>
-            <h1 className="tracking-wide sma:text-5xl lg:text-7xl cust:text-5xl sma:ms-[100px] lg:ms-12 font-Anton font-extrabold uppercase text-[#8c52ff]">
+            <h1 className="tracking-wide sma:text-5xl lg:text-7xl cust:text-5xl sma:ms-[100px] lg:ms-12 font-Anton font-extrabold uppercase text-[#FF2A2E]">
               Toodle toys
             </h1>
-            <h1 className="text-5xl lg:text-end lg:me-20 ms-10 lg:ms-0 font-Barlow font-bold uppercase text-[#8c52ff]">
+            <h1 className="text-5xl lg:text-end lg:me-20 ms-10 lg:ms-0 font-Barlow font-bold uppercase text-[#FF2A2E]">
               Store
             </h1>
           </div>
           <div className="lg:ms-14 cust:ms-4 mt-2">
-            <h1 className="text-2xl text-end me-4 cust:text-2xl text-[#8c52ff] font-Barlow font-medium">
+            <h1 className="text-2xl text-end me-4 cust:text-2xl text-[#FF2A2E] font-Barlow font-medium">
               An Action figure toy store
             </h1>
-            <h1 className="hidden lg:block mt-8 ms-8 lg:w-[400px] text-[#8c52ff] text-xl">
+            <h1 className="hidden lg:block mt-8 ms-8 lg:w-[400px] text-[#FF2A2E] text-xl">
               Join the Toodle Toys family today and make cherished memories with
               our enchanting range of toys. Explore our website and discover the
               perfect playmate for your little one.
@@ -56,16 +56,16 @@ const Banner = () => {
               />
               <div className="relative left-14 -bottom-[290px]">
                 {" "}
-                <h1 className="text-3xl text-[#8c52ff] font-Anton tracking-wider">
+                <h1 className="text-3xl text-[#FF2A2E] font-Anton tracking-wider">
                   Itachi Uchiha
                 </h1>
                 <h1>
-                  <span className="text-xl text-[#8c52ff] font-Barlow font-bold">
+                  <span className="text-xl text-[#FF2A2E] font-Barlow font-bold">
                     Action Figure From Naruto
                   </span>
                 </h1>
                 <div className="flex justify-end me-32">
-                  <button className="py-4  font-Anton text-2xl shadow-md shadow-[#8c52ff] text-[#8c52ff]  flex  items-center gap-2 px-4 rounded-3xl">
+                  <button className="py-4  font-Anton text-2xl shadow-md shadow-[#FF2A2E] text-[#FF2A2E]  flex  items-center gap-2 px-4 rounded-3xl">
                     <AiOutlinePlus className="font-bold text-2xl" /> Add to Cart
                   </button>
                 </div>
@@ -80,16 +80,16 @@ const Banner = () => {
               />
               <div className="relative left-14 -bottom-[290px]">
                 {" "}
-                <h1 className="text-3xl text-[#8c52ff] font-Anton tracking-wider">
+                <h1 className="text-3xl text-[#FF2A2E] font-Anton tracking-wider">
                   Iam Groot
                 </h1>
                 <h1>
-                  <span className="text-xl text-[#8c52ff] font-Barlow font-bold">
+                  <span className="text-xl text-[#FF2A2E] font-Barlow font-bold">
                     Action Figure From Guardiens
                   </span>
                 </h1>
                 <div className="flex justify-end me-32">
-                  <button className="py-4  font-Anton text-2xl shadow-md shadow-[#8c52ff] text-[#8c52ff]  flex  items-center gap-2 px-4 rounded-3xl">
+                  <button className="py-4  font-Anton text-2xl shadow-md shadow-[#FF2A2E] text-[#FF2A2E]  flex  items-center gap-2 px-4 rounded-3xl">
                     <AiOutlinePlus className="font-bold text-2xl" /> Add to Cart
                   </button>
                 </div>
@@ -103,16 +103,16 @@ const Banner = () => {
               />
               <div className="relative left-14 -bottom-[290px]">
                 {" "}
-                <h1 className="text-3xl text-[#8c52ff] font-Anton tracking-wider">
+                <h1 className="text-3xl text-[#FF2A2E] font-Anton tracking-wider">
                   Thanos
                 </h1>
                 <h1>
-                  <span className="text-xl text-[#8c52ff] font-Barlow font-bold">
+                  <span className="text-xl text-[#FF2A2E] font-Barlow font-bold">
                     Action Figure From Avengers
                   </span>
                 </h1>
                 <div className="flex justify-end me-32">
-                  <button className="py-4  font-Anton text-2xl shadow-md shadow-[#8c52ff] text-[#8c52ff]  flex  items-center gap-2 px-4 rounded-3xl">
+                  <button className="py-4  font-Anton text-2xl shadow-md shadow-[#FF2A2E] text-[#FF2A2E]  flex  items-center gap-2 px-4 rounded-3xl">
                     <AiOutlinePlus className="font-bold text-2xl" /> Add to Cart
                   </button>
                 </div>
@@ -121,7 +121,7 @@ const Banner = () => {
           </Swiper>
         </div>
         <div>
-          <h1 className=" lg:hidden cust:mt-1 ms-8 lg:w-[400px] text-[#8c52ff] ">
+          <h1 className=" lg:hidden cust:mt-1 ms-8 lg:w-[400px] text-[#FF2A2E] ">
             Join the Toodle Toys family today and make cherished memories with
             our enchanting range of toys. Explore our website and discover the
             perfect playmate for your little one.

@@ -35,13 +35,13 @@ const Nav = () => {
       {" "}
       <Activelink
         to="/"
-        className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-2 font-bold"
+        className=" uppercase text-[#FF2A2E]   font-Barlow text-xl mx-2 font-bold"
       >
         <a>Home</a>
       </Activelink>
       <Activelink
         to="/Alltoys"
-        className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
+        className=" uppercase text-[#FF2A2E]   font-Barlow text-xl mx-1 font-bold"
       >
         <a>All Toys</a>
       </Activelink>
@@ -50,13 +50,13 @@ const Nav = () => {
           {" "}
           <Activelink
             to="/MyToys"
-            className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
+            className=" uppercase text-[#FF2A2E]   font-Barlow text-xl mx-1 font-bold"
           >
             <a>My Toys</a>
           </Activelink>
           <Activelink
             to="/AddToy"
-            className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
+            className=" uppercase text-[#FF2A2E]   font-Barlow text-xl mx-1 font-bold"
           >
             <a>Add A Toy</a>
           </Activelink>
@@ -64,20 +64,20 @@ const Nav = () => {
       ) : (
         ""
       )}
-      <Activelink className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold">
+      <Activelink className=" uppercase text-[#FF2A2E]   font-Barlow text-xl mx-1 font-bold">
         <a>Blogs</a>
       </Activelink>
       {user !== null ? (
         <button
           onClick={signOUt}
-          className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
+          className=" uppercase text-[#FF2A2E]   font-Barlow text-xl mx-1 font-bold"
         >
           <a>Logout</a>
         </button>
       ) : (
         <Activelink
           to="/Login"
-          className=" uppercase text-[#8c52ff]   font-Barlow text-xl mx-1 font-bold"
+          className=" uppercase text-[#FF2A2E]   font-Barlow text-xl mx-1 font-bold"
         >
           <a>Login</a>
         </Activelink>
@@ -128,7 +128,7 @@ const Nav = () => {
       </div>
       <div className=" pe-2 w-full ">
         <img
-          className="rounded-full ring-[#8c52ff] ring-4 w-10  ms-auto"
+          className="rounded-full ring-[#FF2A2E] ring-4 w-10  ms-auto"
           src={user?.photoURL}
           alt=""
         />

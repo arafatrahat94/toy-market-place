@@ -101,24 +101,24 @@ const Register = () => {
       <div className="flex flex-col h-[460px] lg:flex-row">
         <div className="lg:w-[600px]">
           <div className="cust:mt-2 sma:mt-6 mt-14 ">
-            <h1 className="text-4xl cust:ms-[80px] sma:ms-[60px] lg:text-5xl ms-5 font-Barlow font-bold uppercase text-[#8c52ff]">
+            <h1 className="text-4xl cust:ms-[80px] sma:ms-[60px] lg:text-5xl ms-5 font-Barlow font-bold uppercase text-[#FF2A2E]">
               Register to
             </h1>
-            <h1 className="tracking-wide sma:text-4xl lg:text-7xl cust:text-4xl sma:ms-[130px] cust:ms-[140px] lg:ms-12 font-Anton font-extrabold uppercase text-[#8c52ff]">
+            <h1 className="tracking-wide sma:text-4xl lg:text-7xl cust:text-4xl sma:ms-[130px] cust:ms-[140px] lg:ms-12 font-Anton font-extrabold uppercase text-[#FF2A2E]">
               Toodle toys
             </h1>
-            <h1 className="text-5xl cust:ms-[80px] lg:text-end lg:me-20 ms-10 lg:ms-0 font-Barlow sma:ms-[50px] font-bold uppercase text-[#8c52ff]">
+            <h1 className="text-5xl cust:ms-[80px] lg:text-end lg:me-20 ms-10 lg:ms-0 font-Barlow sma:ms-[50px] font-bold uppercase text-[#FF2A2E]">
               Store
             </h1>
           </div>
           <div className="lg:ms-14 hidden lg:block cust:ms-4 mt-2">
-            <h1 className="text-3xl text-start me-4 cust:text-2xl text-[#8c52ff] font-Barlow font-medium">
+            <h1 className="text-3xl text-start me-4 cust:text-2xl text-[#FF2A2E] font-Barlow font-medium">
               Or Register with
             </h1>
-            <h1 className="hidden lg:block mt-8 ms-8 lg:w-[400px] text-[#8c52ff] text-xl">
+            <h1 className="hidden lg:block mt-8 ms-8 lg:w-[400px] text-[#FF2A2E] text-xl">
               <button
                 onClick={glogin}
-                className="btn focus:text-black focus:bg-[#8c52ff] outline-[#8c52ff] text-[#8c52ff] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow tracking-widest text-2xl w-full h-16"
+                className="btn focus:text-black focus:bg-[#FF2A2E] outline-[#FF2A2E] text-[#FF2A2E] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow tracking-widest text-2xl w-full h-16"
               >
                 <AiOutlineGoogle className="text-2xl" />
                 Google
@@ -131,13 +131,13 @@ const Register = () => {
           {" "}
           <form
             onSubmit={handleRegister}
-            className="card sma:mt-6 flex sma:w-[320px] cust:w-[350px] mx-auto lg:w-[400px] ring ring-[#8c52ff] rounded-lg flex-shrink-0  shadow-2xl "
+            className="card sma:mt-6 flex sma:w-[320px] cust:w-[350px] mx-auto lg:w-[400px] ring ring-[#FF2A2E] rounded-lg flex-shrink-0 bg-white shadow-2xl "
           >
             <div className="mx-6 my-2">
               <div className="lg:flex gap-x-4">
                 <div className="form-control">
                   <label className="label sma:pt-2 ps-0 pb-2">
-                    <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#8c52ff] ">
+                    <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#FF2A2E] ">
                       Your Name
                     </span>
                   </label>
@@ -145,12 +145,12 @@ const Register = () => {
                     type="text"
                     placeholder="name"
                     name="name"
-                    className="input input-bordered outline-dotted outline-[#8c52ff] sma:h-10 cust:h-12 h-14 border-[#8c52ff] rounded-lg"
+                    className="input input-bordered outline-dotted outline-[#FF2A2E] sma:h-10 cust:h-12 h-14 border-[#FF2A2E] rounded-lg"
                   />
                 </div>
                 <div className=" lg:block form-control">
                   <label className="label  sma:pt-2 ps-0 pb-2">
-                    <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#8c52ff] ">
+                    <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#FF2A2E] ">
                       Photo Url
                     </span>
                   </label>
@@ -158,13 +158,13 @@ const Register = () => {
                     type="text"
                     placeholder="paste url"
                     name="photo"
-                    className="input input-bordered outline-dotted outline-[#8c52ff] sma:h-10 lg:w-[120px] cust:h-12 h-14 border-[#8c52ff] rounded-lg"
+                    className="input input-bordered outline-dotted outline-[#FF2A2E] sma:h-10 lg:w-[120px] cust:h-12 h-14 border-[#FF2A2E] rounded-lg"
                   />
                 </div>
               </div>
               <div className="form-control">
                 <label className="label sma:pt-2 ps-0 pb-2">
-                  <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#8c52ff] ">
+                  <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#FF2A2E] ">
                     Your Email
                   </span>
                 </label>
@@ -173,13 +173,13 @@ const Register = () => {
                   placeholder="@mail.com"
                   name="email"
                   ref={emailref}
-                  className="input input-bordered outline-dotted outline-[#8c52ff] sma:h-10 cust:h-12 h-14 border-[#8c52ff] rounded-lg"
+                  className="input input-bordered outline-dotted outline-[#FF2A2E] sma:h-10 cust:h-12 h-14 border-[#FF2A2E] rounded-lg"
                 />
               </div>
               <div className="">
                 <div className="form-control">
                   <label className="label ps-0 pb-2">
-                    <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#8c52ff] ">
+                    <span className="text-2xl sma:text-xl font-bold font-Barlow text-[#FF2A2E] ">
                       Password
                     </span>
                   </label>
@@ -187,20 +187,20 @@ const Register = () => {
                     type="text"
                     placeholder="pAssw0rd"
                     name="pass"
-                    className="input sma:h-10 input-bordered  outline-dotted cust:h-12 outline-[#8c52ff] h-14 border-[#8c52ff] rounded-lg"
+                    className="input sma:h-10 input-bordered  outline-dotted cust:h-12 outline-[#FF2A2E] h-14 border-[#FF2A2E] rounded-lg"
                   />{" "}
                 </div>
               </div>
               <div className="flex gap-x-6 items-center">
                 <div className="form-control mt-10">
-                  <button className="btn mx-auto focus:text-black focus:bg-[#8c52ff] outline-[#8c52ff] text-[#8c52ff] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow cust:w-[150px] sma:w-[140px] tracking-widest sma:text-base text-2xl w-full sma:h-10 h-16">
+                  <button className="btn mx-auto focus:text-black focus:bg-[#FF2A2E] outline-[#FF2A2E] text-[#FF2A2E] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow cust:w-[150px] sma:w-[140px] tracking-widest sma:text-base text-2xl w-full sma:h-10 h-16">
                     Register
                   </button>
                 </div>
               </div>
             </div>
             <div>
-              <h1 className="text-[#8c52ff] text-end p-2">
+              <h1 className="text-[#FF2A2E] text-end p-2">
                 {" "}
                 <Link
                   to="/Login"
@@ -214,13 +214,13 @@ const Register = () => {
         </div>
 
         <div className="lg:ms-14 lg:hidden  mt-5">
-          <h1 className="text-3xl text-center  cust:text-2xl text-[#8c52ff] font-Anton font-medium">
+          <h1 className="text-3xl text-center  cust:text-2xl text-[#FF2A2E] font-Anton font-medium">
             Or Register with
           </h1>
-          <h1 className="mt-8 text-center lg:w-[400px] text-[#8c52ff] text-xl">
+          <h1 className="mt-8 text-center lg:w-[400px] text-[#FF2A2E] text-xl">
             <button
               onClick={glogin}
-              className="btn focus:text-black focus:bg-[#8c52ff] outline-[#8c52ff] text-[#8c52ff] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow tracking-widest text-2xl w-[250px] h-10"
+              className="btn focus:text-black focus:bg-[#FF2A2E] outline-[#FF2A2E] text-[#FF2A2E] btn-circle btn-outline outline-dotted uppercase font-bold font-Barlow tracking-widest text-2xl w-[250px] h-10"
             >
               <AiOutlineGoogle className="text-2xl" />
               Google

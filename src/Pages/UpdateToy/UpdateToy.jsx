@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
-const AddToy = () => {
+const UpdateToy = () => {
+  const loader = useLoaderData();
   const { user } = useContext(AuthContext);
   const { email } = user;
-  const [value, setValue] = useState(10); // Initial value for the range input
+  const [value, setValue] = useState(loader.Quantity); // Initial value for the range input
   const Toast = Swal.mixin({
     toast: true,
     position: "top",
@@ -43,8 +45,8 @@ const AddToy = () => {
       email: email,
       Image_URL: Image_URL,
     };
-    fetch(`https://toys-server-nu.vercel.app/Addtoy`, {
-      method: "POST",
+    fetch(`https://toy-server-94.onrender.com/Update${loader._id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -56,10 +58,9 @@ const AddToy = () => {
         event.target.reset();
         Toast.fire({
           icon: "success",
-          title: `new toy added`,
+          title: `toy updated`,
         });
       });
-    console.log(data);
   };
   return (
     <div className="">
@@ -83,6 +84,7 @@ const AddToy = () => {
                       type="text"
                       placeholder="enter your toy name"
                       name="name"
+                      defaultValue={loader.Name}
                       // ref={emailref}
                       className="input input-bordered lg:outline-dotted outline-[#D71317] sma:h-10 ps-2  lg:w-[400px] cust:h-12 h-14 border-[#D71317] rounded-lg"
                     />
@@ -97,6 +99,7 @@ const AddToy = () => {
                       type="text"
                       placeholder="paste the url"
                       name="Image_URL"
+                      defaultValue={loader.Image_URL}
                       // ref={emailref}
                       className="input input-bordered lg:outline-dotted outline-[#D71317] sma:h-10 ps-2  lg:w-[400px] cust:h-12 h-14 border-[#D71317] rounded-lg"
                     />
@@ -112,6 +115,7 @@ const AddToy = () => {
                         type="text"
                         placeholder="Country Name"
                         name="MadeIn"
+                        defaultValue={loader.MadeIn}
                         className="input sma:h-10 input-bordered  lg:outline-dotted cust:h-12  outline-[#D71317] h-14 lg:w-[190px] border-[#D71317] rounded-lg"
                       />{" "}
                       <div className="my-2"></div>
@@ -127,6 +131,7 @@ const AddToy = () => {
                         type="text"
                         placeholder="Price"
                         name="Price"
+                        defaultValue={loader.Price}
                         className="input sma:h-10 input-bordered  lg:outline-dotted cust:h-12 lg:w-[191px] outline-[#D71317] h-14 border-[#D71317] rounded-lg"
                       />{" "}
                     </div>
@@ -161,6 +166,7 @@ const AddToy = () => {
                       <input
                         type="text"
                         placeholder="age"
+                        defaultValue={loader.Recommended_Age}
                         name="Recommended_Age"
                         className="input sma:h-10 input-bordered  lg:outline-dotted cust:h-12 lg:w-[191px] outline-[#D71317] h-14 border-[#D71317] rounded-lg"
                       />{" "}
@@ -175,6 +181,7 @@ const AddToy = () => {
 
                       <select
                         name="Category"
+                        defaultValue={loader.Category}
                         className="select select-secondary  lg:w-[191px] border-[#D71317] w-full"
                       >
                         <option disabled selected>
@@ -202,6 +209,7 @@ const AddToy = () => {
                   <div>
                     <textarea
                       name="Description"
+                      defaultValue={loader.Description}
                       placeholder="Enter Description Of Your Toy"
                       className="rounded-xl bg-transparent textarea-bordered textarea text-[#D71317] text-base lg:py-4 shadow shadow-[#D71317] bg-white lg:mt-0 mx-auto lg:w-[384px] cust:w-[350px] w-[345px]"
                       id=""
@@ -223,4 +231,4 @@ const AddToy = () => {
   );
 };
 
-export default AddToy;
+export default UpdateToy;

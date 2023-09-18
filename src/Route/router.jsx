@@ -7,6 +7,7 @@ import Mytoys from "../Pages/Mytoys/Mytoys";
 import AddToy from "../Pages/AddToy/AddToy";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
+import UpdateToy from "../Pages/UpdateToy/UpdateToy";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,12 @@ const router = createBrowserRouter([
       {
         path: "/MyToys",
         element: <Mytoys></Mytoys>,
+      },
+      {
+        path: "/Update/:id",
+        element: <UpdateToy></UpdateToy>,
+        loader: ({ params }) =>
+          fetch(`https://toys-server-nu.vercel.app/Details/${params.id}`),
       },
       {
         path: "/Login",

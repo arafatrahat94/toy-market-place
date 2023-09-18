@@ -33,7 +33,7 @@ const Main = () => {
             />
           </div>
           <div className="  items-center hidden lg:block  -z-20 xl:left-[200px] lg:absolute">
-            <img className="  " src={img2} alt="" />
+            <img className=" rounded-b-3xl " src={img2} alt="" />
           </div>
           <Nav></Nav>
           <Outlet />

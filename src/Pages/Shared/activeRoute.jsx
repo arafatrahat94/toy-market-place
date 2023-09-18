@@ -7,8 +7,8 @@ const Activelink = ({ to, children }) => {
       to={to}
       className={({ isActive }) =>
         isActive
-          ? "uppercase text-[#8c52ff] mx-3 py-1 font-Barlow text-xl  font-bold border-b-2 border-dashed border-[#8c52ff]"
-          : "uppercase text-[#8c52ff] mx-3  py-1 font-Barlow text-xl  font-bold"
+          ? "uppercase text-[#FF2A2E] mx-3 py-1 font-Barlow text-xl  font-bold border-b-2 border-dashed border-[#FF2A2E]"
+          : "uppercase text-[#FF2A2E] mx-3  py-1 font-Barlow text-xl  font-bold"
       }
     >
       {children}
