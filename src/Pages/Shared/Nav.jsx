@@ -70,14 +70,14 @@ const Nav = () => {
       {user !== null ? (
         <button
           onClick={signOUt}
-          className=" uppercase text-[#FF2A2E]   font-Barlow text-xl mx-1 font-bold"
+          className=" uppercase sma:my-1   font-Barlow text-xl  font-bold ring glass     text-white sma:p-2  border-[#FF2A2E]   lg:mt-0     bg-black  py-2 sma:mt-4 w-40 mx-auto rounded "
         >
           <a>Logout</a>
         </button>
       ) : (
         <Activelink
           to="/Login"
-          className=" uppercase text-[#FF2A2E]   font-Barlow text-xl mx-1 font-bold"
+          className=" uppercase text-[#FF2A2E]   font-Barlow text-xl glass bg-black sma:py-2 mt-4 w-40 mx-auto rounded font-bold"
         >
           <a>Login</a>
         </Activelink>
@@ -86,33 +86,54 @@ const Nav = () => {
   );
 
   return (
-    <div className="navbar h-20  bg-transparent  ">
+    <div className="navbar h-20   bg-transparent  ">
       <div className={`navbar-start `}>
         <div className="z-[1] ">
           <div className="navbar-start">
             <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <label
+                htmlFor="my-drawer"
+                tabIndex={0}
+                className="btn btn-ghost lg:hidden"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-7 w-7"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path
-                    strokeActivelinknecap="round"
-                    strokeActivelinknejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
+                  <path strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                 </svg>
               </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                {navbar}
-              </ul>
+
+              <div>
+                <div className="drawer">
+                  <input
+                    id="my-drawer"
+                    type="checkbox"
+                    className="drawer-toggle"
+                  />
+                  <div className="drawer-content">
+                    {/* Page content here */}
+                  </div>
+                  <div className="drawer-side">
+                    <label
+                      htmlFor="my-drawer"
+                      className="drawer-overlay"
+                    ></label>
+
+                    <ul className="menu p-2 w-72 min-h-full bg-base-200 text-base-content">
+                      <h1 className="text-center text-xl font-Barlow font-bold text-red-600 mt-2">
+                        Navigation Menu
+                      </h1>
+                      <hr className="my-2 border border-red-400" />
+                      {/* Sidebar content here */}
+                      {navbar}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

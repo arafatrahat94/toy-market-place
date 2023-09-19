@@ -8,11 +8,15 @@ import AddToy from "../Pages/AddToy/AddToy";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import UpdateToy from "../Pages/UpdateToy/UpdateToy";
+import TOyDetails from "../Pages/Alltoys/Alltoys";
+import PrivateRoute from "./PrivateRoute";
+import Error from "../Pages/Shared/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -34,7 +38,7 @@ const router = createBrowserRouter([
         path: "/Update/:id",
         element: <UpdateToy></UpdateToy>,
         loader: ({ params }) =>
-          fetch(`https://toys-server-nu.vercel.app/Details/${params.id}`),
+          fetch(`https://toy-server-94.onrender.com/Details/${params.id}`),
       },
       {
         path: "/Login",
@@ -43,6 +47,16 @@ const router = createBrowserRouter([
       {
         path: "/Register",
         element: <Register></Register>,
+      },
+      {
+        path: "/TOyDetails/:id",
+        element: (
+          <PrivateRoute>
+            <TOyDetails></TOyDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://toys-server-nu.vercel.app/Details/${params.id}`),
       },
     ],
   },

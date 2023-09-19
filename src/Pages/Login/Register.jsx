@@ -22,10 +22,33 @@ const Register = () => {
       toast.addEventListener("mouseleave", Swal.resumeTimer);
     },
   });
-
+  const { creatUser, setUser, Update, glog, user, logout } =
+    useContext(AuthContext);
+  const refetch = () => {
+    const data = {
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+      userType: "Basic",
+    };
+    fetch(`https://toys-server-3th00c4hc-arafathsensei94.vercel.app/User`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        logout();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
   const [erros, setErros] = useState("");
   const emailref = useRef(null);
-  const { creatUser, setUser, Update, glog, user } = useContext(AuthContext);
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -54,29 +77,12 @@ const Register = () => {
                 title: `${error.message.split("Firebase:").join("")}`,
               });
             });
-        setUser([]);
+        refetch();
         Toast.fire({
           icon: "success",
           title: `new user created`,
         });
-        const user = result.user;
-        const data = {
-          name: user.displayName,
-          email: user.email,
-          photo: user.photoURL,
-        };
-        fetch(`https://toys-server-3th00c4hc-arafathsensei94.vercel.app/User`, {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+
         console.log(user);
       })
       .catch((error) => {
@@ -87,17 +93,43 @@ const Register = () => {
       });
   };
   const glogin = () => {
-    glog(() => {
-      Toast.fire({
-        icon: "success",
-        title: `new user created`,
-      });
-      console.log("user");
-    }).catch((error) => {});
+    glog()
+      .then((result) => {
+        const user = result.user;
+        const data = {
+          name: user.displayName,
+          email: user.email,
+          photo: user.photoURL,
+          userType: "Basic",
+        };
+        fetch(`https://toys-server-3th00c4hc-arafathsensei94.vercel.app/User`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            Toast.fire({
+              icon: "success",
+              title: `new user created`,
+            });
+            logout();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
+        console.log(user);
+        console.log("user");
+      })
+      .catch((error) => {});
   };
+
   console.log(user);
   return (
-    <div className="">
+    <div className="min-h-screen sma:mb-40 lg:mb-0">
       <div className="flex flex-col h-[460px] lg:flex-row">
         <div className="lg:w-[600px]">
           <div className="cust:mt-2 sma:mt-6 mt-14 ">

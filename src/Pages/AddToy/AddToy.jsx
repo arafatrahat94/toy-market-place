@@ -62,7 +62,7 @@ const AddToy = () => {
     console.log(data);
   };
   return (
-    <div className="">
+    <div className="mb-10">
       <form
         onSubmit={getdata}
         className="grid lg:grid-cols-2 shadow-2xl shadow-black w-11/12 mx-auto rounded-2xl"
@@ -146,7 +146,7 @@ const AddToy = () => {
                         value={value}
                         onChange={handleChange}
                       />
-                      <div className="tooltip  bg-purple-600 w-[45px] text-black font-Anton">
+                      <div className="tooltip  bg-red-600 w-[45px] text-white tracking-wider font-Anton">
                         {value}
                       </div>
                     </div>
@@ -194,21 +194,21 @@ const AddToy = () => {
           </div>
         </div>
         <div>
-          <div className="flex  flex-col h-[460px] lg:flex-row">
+          <div className="flex  flex-col lg:h-[490px] h-[360px] lg:flex-row">
             <div className="lg:w-[500px]   items-center justify-center  flex ">
               {" "}
               <div className="card p-0 items-center flex sma:w-[320px] cust:w-[350px] mx-auto lg:w-[450px]   flex-shrink-0  shadow-2xl ">
-                <div className="card-body lg:p-8 sma:p-0 w-[350px] lg:w-full ">
+                <div className=" lg:p-8 sma:p-0 w-[350px] lg:w-full ">
                   <div>
                     <textarea
                       name="Description"
                       placeholder="Enter Description Of Your Toy"
-                      className="rounded-xl bg-transparent textarea-bordered textarea text-[#D71317] text-base lg:py-4 shadow shadow-[#D71317] bg-white lg:mt-0 mx-auto lg:w-[384px] cust:w-[350px] w-[345px]"
+                      className="rounded-xl bg-transparent textarea-bordered flex  textarea text-[#D71317] text-base lg:py-4 shadow shadow-[#D71317] bg-white lg:mt-0 mx-auto lg:w-[384px] cust:w-[320px] w-[325px]"
                       id=""
                       rows="10"
                     ></textarea>
                   </div>
-                  <div className="form-control  w-full mt-6">
+                  <div className="form-control  w-[200px] mx-auto lg:w-full pb-4 mt-6">
                     <button className="btn focus:text-black focus:bg-[#D71317] outline-[#D71317] text-[#D71317] btn-circle btn-outline lg:outline-dotted uppercase font-bold font-Barlow tracking-widest sma:text-xl w-full  text-2xl  sma:h-10 h-16">
                       Upload
                     </button>

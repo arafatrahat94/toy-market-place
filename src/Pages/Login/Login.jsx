@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { AiOutlineGoogle, AiOutlinePlus } from "react-icons/ai";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import "./Login.css";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 const Login = () => {
@@ -22,6 +22,9 @@ const Login = () => {
       toast.addEventListener("mouseleave", Swal.resumeTimer);
     },
   });
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location?.state?.from?.pathname || "/";
   const { creatUser, Update, glog, user, signI, setUser } =
     useContext(AuthContext);
   const [erros, setErros] = useState("");
@@ -31,24 +34,40 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const pass = form.pass.value;
-    signI(email, pass).then(() => {});
-    console.log(email, pass);
+    signI(email, pass).then((result) => {
+      const user = result.user;
+      fetch(`https://toys-server-nu.vercel.app/User?email=${user?.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setUser(data);
+          navigate(from, { replace: true });
+        });
+    });
+    console.log(user);
   };
   const handleForgotPass = () => {
     const email = emailref.current.value;
     console.log(email);
   };
+
   const glogin = () => {
-    glog(() => {
-      Toast.fire({
-        icon: "success",
-        title: `new user created`,
-      });
-      console.log("user");
-    }).catch((error) => {});
+    glog()
+      .then((result) => {
+        const user = result.user;
+        navigate(from, { replace: true });
+        fetch(`https://toys-server-nu.vercel.app/User?email=${user?.email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setUser(data);
+          });
+
+        console.log("user");
+      })
+      .catch((error) => {});
   };
+  console.log(user);
   return (
-    <div className="">
+    <div className="min-h-screen mb-16  lg:mb-0">
       <div className="flex flex-col h-[460px] lg:flex-row">
         <div className="lg:w-[600px]">
           <div className="cust:mt-2 sma:mt-6 mt-14 ">

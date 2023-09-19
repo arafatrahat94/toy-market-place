@@ -16,7 +16,7 @@ const Banner = () => {
             <h1 className="text-4xl lg:text-5xl ms-5 font-Barlow font-bold uppercase text-[#FF2A2E]">
               Welcome to
             </h1>
-            <h1 className="tracking-wide sma:text-5xl lg:text-7xl cust:text-5xl sma:ms-[100px] lg:ms-12 font-Anton font-extrabold uppercase text-[#FF2A2E]">
+            <h1 className="tracking-wide sma:text-5xl lg:text-7xl cust:text-5xl sma:ms-[100px] lg:ms-12 font-Anton font-extrabold uppercase text-red-500 bg-gradient-to-r from-red-500 to-black bg-clip-text text-transparent">
               Toodle toys
             </h1>
             <h1 className="text-5xl lg:text-end lg:me-20 ms-10 lg:ms-0 font-Barlow font-bold uppercase text-[#FF2A2E]">
@@ -35,7 +35,7 @@ const Banner = () => {
           </div>
         </div>
 
-        <div className="lg:w-[500px] ">
+        <div className="lg:w-[500px] z-0">
           <Swiper
             spaceBetween={50}
             slidesPerView={1}

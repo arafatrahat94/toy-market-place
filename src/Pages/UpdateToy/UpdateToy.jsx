@@ -45,32 +45,43 @@ const UpdateToy = () => {
       email: email,
       Image_URL: Image_URL,
     };
-    fetch(`https://toy-server-94.onrender.com/Update${loader._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        event.target.reset();
-        Toast.fire({
-          icon: "success",
-          title: `toy updated`,
-        });
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Update it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://toy-server-94.onrender.com/Update${loader._id}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            event.target.reset();
+            Toast.fire({
+              icon: "success",
+              title: `toy updated`,
+            });
+          });
+      }
+    });
   };
   return (
-    <div className="">
+    <div className="min-h-screen mb-10">
       <form
         onSubmit={getdata}
-        className="grid lg:grid-cols-2 shadow-2xl shadow-black w-11/12 mx-auto rounded-2xl"
+        className="grid lg:grid-cols-2 shadow-2xl shadow-red-300 w-11/12 mx-auto rounded-2xl"
       >
         <div>
           <div className="flex flex-col sma:h-[650px] cust:h-[690px]  lg:h-[570px] lg:flex-row">
-            <div className="lg:w-full  lg:ps-4 cust:h-[460px] sma:h-[560px] lg:h-[550px] flex ">
+            <div className="lg:w-full  lg:ps-4 cust:h-[460px] sma:h-[640px]  lg:h-[550px] flex ">
               {" "}
               <div className="card  flex sma:w-[320px] cust:w-[350px] mx-auto  lg:w-full  rounded-lg flex-shrink-0  shadow-2xl ">
                 <div className="card-body p-2 lg:p-5 lg:flex lg:items-center lg:justify-center sma:p-0">
@@ -201,24 +212,24 @@ const UpdateToy = () => {
           </div>
         </div>
         <div>
-          <div className="flex  flex-col h-[460px] lg:flex-row">
+          <div className="flex  flex-col h-[380px] lg:h-[460px] lg:flex-row">
             <div className="lg:w-[500px]   items-center justify-center  flex ">
               {" "}
               <div className="card p-0 items-center flex sma:w-[320px] cust:w-[350px] mx-auto lg:w-[450px]   flex-shrink-0  shadow-2xl ">
-                <div className="card-body lg:p-8 sma:p-0 w-[350px] lg:w-full ">
+                <div className="card-body h-[370px] rounded-lg lg:h-full lg:p-8 sma:p-0 w-[350px] lg:w-full ">
                   <div>
                     <textarea
                       name="Description"
                       defaultValue={loader.Description}
                       placeholder="Enter Description Of Your Toy"
-                      className="rounded-xl bg-transparent textarea-bordered textarea text-[#D71317] text-base lg:py-4 shadow shadow-[#D71317] bg-white lg:mt-0 mx-auto lg:w-[384px] cust:w-[350px] w-[345px]"
+                      className="rounded-xl bg-transparent textarea-bordered textarea text-[#D71317] text-base lg:py-4 shadow shadow-[#D71317] bg-white lg:mt-0 mx-auto lg:w-[384px] cust:w-[340px] w-[330px] flex"
                       id=""
                       rows="10"
                     ></textarea>
                   </div>
                   <div className="form-control  w-full mt-6">
-                    <button className="btn focus:text-black focus:bg-[#D71317] outline-[#D71317] text-[#D71317] btn-circle btn-outline lg:outline-dotted uppercase font-bold font-Barlow tracking-widest sma:text-xl w-full  text-2xl  sma:h-10 h-16">
-                      Upload
+                    <button className="btn focus:text-black focus:bg-[#D71317] outline-[#D71317] text-[#D71317] btn-circle btn-outline lg:outline-dotted uppercase font-bold font-Barlow tracking-widest sma:text-xl lg:w-full w-9/12 mx-auto text-2xl  sma:h-10 h-16">
+                      UpDate
                     </button>
                   </div>
                 </div>
