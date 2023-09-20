@@ -3,7 +3,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { BsPencilSquare, BsTrash } from "react-icons/bs";
 import Swal from "sweetalert2";
+import useTittle from "../../hooks";
 const Mytoys = () => {
+  useTittle("My Toys");
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [myToys, setMyToys] = useState([]);
@@ -20,7 +22,7 @@ const Mytoys = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        fetch(`https://toy-server-94.onrender.com/Delete/${id}`, {
+        fetch(`https://toys-server-nu.vercel.app/Delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -33,7 +35,7 @@ const Mytoys = () => {
       setLoading(false);
     }, 1000);
     if (loading === false) {
-      fetch(`https://toy-server-94.onrender.com/MyToys?email=${user?.email}`, {
+      fetch(`https://toys-server-nu.vercel.app/MyToys?email=${user?.email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("toy-access")}`,
@@ -48,6 +50,10 @@ const Mytoys = () => {
         });
     }
   }, [user, navigate, loading]);
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   console.log(localStorage.getItem("toy-access"));
   return (
     <div>

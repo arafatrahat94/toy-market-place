@@ -10,7 +10,9 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useTittle from "../../hooks";
 const Login = () => {
+  useTittle("Login");
   const Toast = Swal.mixin({
     toast: true,
     position: "top",
@@ -34,9 +36,8 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const pass = form.pass.value;
-    signI(email, pass).then((result) => {
-      const user = result.user;
-      fetch(`https://toys-server-nu.vercel.app/User?email=${user?.email}`)
+    signI(email, pass).then(() => {
+      fetch(`https://toys-server-nu.vercel.app/User?email=${email}`)
         .then((res) => res.json())
         .then((data) => {
           setUser(data);

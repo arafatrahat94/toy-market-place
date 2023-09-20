@@ -11,6 +11,13 @@ import UpdateToy from "../Pages/UpdateToy/UpdateToy";
 import TOyDetails from "../Pages/Alltoys/Alltoys";
 import PrivateRoute from "./PrivateRoute";
 import Error from "../Pages/Shared/Error";
+import ViewAll from "../Pages/ViewAll/ViewAll";
+import CategoryWIse from "../Pages/CategoryWise/CategoryWIse";
+import CategoryWIseDc from "../Pages/Home/ShopByCategory/ShopByCategoryDc";
+import CategoryWIseMarvel from "../Pages/CategoryWise/CategoryWiseMarvel";
+import BannerCustomize from "../Pages/BannerCustomize/BannerCustomize";
+import Alluser from "../Pages/AllUser/Alluser";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -38,15 +45,43 @@ const router = createBrowserRouter([
         path: "/Update/:id",
         element: <UpdateToy></UpdateToy>,
         loader: ({ params }) =>
-          fetch(`https://toy-server-94.onrender.com/Details/${params.id}`),
+          fetch(`https://toys-server-nu.vercel.app/Details/${params.id}`),
       },
       {
         path: "/Login",
         element: <Login></Login>,
       },
       {
+        path: "/Blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
         path: "/Register",
         element: <Register></Register>,
+      },
+      {
+        path: "/Anime",
+        element: <CategoryWIse></CategoryWIse>,
+      },
+      {
+        path: "/Dc",
+        element: <CategoryWIseDc></CategoryWIseDc>,
+      },
+      {
+        path: "/Marvel",
+        element: <CategoryWIseMarvel></CategoryWIseMarvel>,
+      },
+      {
+        path: "/ViewAll",
+        element: <ViewAll></ViewAll>,
+      },
+      {
+        path: "/AllUser",
+        element: <Alluser></Alluser>,
+      },
+      {
+        path: "/Banner",
+        element: <BannerCustomize></BannerCustomize>,
       },
       {
         path: "/TOyDetails/:id",

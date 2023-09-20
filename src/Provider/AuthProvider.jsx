@@ -14,7 +14,7 @@ import app from "../firebase/firebase.config";
 const auth = getAuth(app);
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   //   create user
@@ -25,6 +25,7 @@ const AuthProvider = ({ children }) => {
   };
   // update name and photourl
   const Update = (name, photo) => {
+    // setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
@@ -40,6 +41,7 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, new GoogleAuthProvider());
   };
   const logout = () => {
+    // setLoading(true);
     return signOut(auth);
   };
   useEffect(() => {
@@ -59,11 +61,19 @@ const AuthProvider = ({ children }) => {
         })
           .then((res) => res.json())
           .then((data) => localStorage.setItem("toy-access", data.token));
+        fetch(
+          `https://toys-server-nu.vercel.app/User?email=${currentUser.email}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            setUser(data);
+          });
       } else localStorage.removeItem("toy-access");
     });
 
     return () => unsub();
   }, []);
+
   console.log(user);
   const authData = {
     creatUser,

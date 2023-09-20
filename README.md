@@ -1,8 +1,25 @@
-# React + Vite
+# Project Tittle: Toodle Toys
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Link: https://toy-market-2140a.web.app/
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features :
+`*`It is a website of a action feagure toys
+`*`You can see the any uploade toys by random user.
+`*`You can give reviews about the toys
+`*`Anyone can see others reviews
+`*`After log in, anyone can submit reviews
+`*`the user type basic and admin is definded now and separated
+`*`admin id: araf@gmail.com pass: 1Arafath
+`*`from admin section any user can be deleted and can be verified too
+`*`pagination feature is added too if the datas length gets more than 10 then the pagination service is there for you
+`*`Photographer can add new service details
+`*`Technologies :
+`*`React js
+`*`Tailwind
+`*`DaisyUI
+`*`Express js
+`*`MongoDB
+`*`SweetAlert2
+`*`Swiper Js
+`*`React Icons
+`*`Lottie files

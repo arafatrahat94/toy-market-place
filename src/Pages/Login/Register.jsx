@@ -10,7 +10,9 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useTittle from "../../hooks";
 const Register = () => {
+  useTittle("Register");
   const Toast = Swal.mixin({
     toast: true,
     position: "top",
@@ -24,14 +26,17 @@ const Register = () => {
   });
   const { creatUser, setUser, Update, glog, user, logout } =
     useContext(AuthContext);
+  const [userName, SetUserName] = useState([]);
+  const [userPhoto, SetUserPhoto] = useState([]);
+  const emailref = useRef(null);
   const refetch = () => {
     const data = {
-      name: user.displayName,
-      email: user.email,
-      photo: user.photoURL,
+      name: userName,
+      email: emailref.current.value,
+      photo: userPhoto,
       userType: "Basic",
     };
-    fetch(`https://toys-server-3th00c4hc-arafathsensei94.vercel.app/User`, {
+    fetch(`https://toys-server-nu.vercel.app/User`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,42 +46,29 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        logout();
+        logout().then(() => {});
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
   const [erros, setErros] = useState("");
-  const emailref = useRef(null);
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
-    const email = form.email.value;
-    const name = form.name.value;
+    const email = emailref.current.value;
     const pass = form.pass.value;
-    const photo = form.photo.value;
-    console.log(name, email, pass, photo);
+    console.log(userName, email, pass);
     creatUser(email, pass)
-      .then((result) => {
-        if (photo.length > 0) {
-          Update(name, photo)
-            .then(() => {})
-            .catch((error) => {
-              Toast.fire({
-                icon: "error",
-                title: `${error.message.split("Firebase:").join("")}`,
-              });
+      .then(() => {
+        Update(userName, userPhoto)
+          .then(() => {})
+          .catch((error) => {
+            Toast.fire({
+              icon: "error",
+              title: `${error.message.split("Firebase:").join("")}`,
             });
-        } else
-          Update(name, result.user.photoURL)
-            .then(() => {})
-            .catch((error) => {
-              Toast.fire({
-                icon: "error",
-                title: `${error.message.split("Firebase:").join("")}`,
-              });
-            });
+          });
         refetch();
         Toast.fire({
           icon: "success",
@@ -102,7 +94,7 @@ const Register = () => {
           photo: user.photoURL,
           userType: "Basic",
         };
-        fetch(`https://toys-server-3th00c4hc-arafathsensei94.vercel.app/User`, {
+        fetch(`https://toys-server-nu.vercel.app/User`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -126,8 +118,13 @@ const Register = () => {
       })
       .catch((error) => {});
   };
-
-  console.log(user);
+  const handleCHange = (event) => {
+    SetUserName(event.target.value);
+  };
+  const handlepChange = (event) => {
+    SetUserPhoto(event.target.value);
+  };
+  console.log(userName);
   return (
     <div className="min-h-screen sma:mb-40 lg:mb-0">
       <div className="flex flex-col h-[460px] lg:flex-row">
@@ -176,7 +173,8 @@ const Register = () => {
                   <input
                     type="text"
                     placeholder="name"
-                    name="name"
+                    name="names"
+                    onChange={handleCHange}
                     className="input input-bordered outline-dotted outline-[#FF2A2E] sma:h-10 cust:h-12 h-14 border-[#FF2A2E] rounded-lg"
                   />
                 </div>
@@ -190,6 +188,7 @@ const Register = () => {
                     type="text"
                     placeholder="paste url"
                     name="photo"
+                    onChange={handlepChange}
                     className="input input-bordered outline-dotted outline-[#FF2A2E] sma:h-10 lg:w-[120px] cust:h-12 h-14 border-[#FF2A2E] rounded-lg"
                   />
                 </div>

@@ -1,9 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
+import useTittle from "../../hooks";
 
 const UpdateToy = () => {
+  useTittle("Update Toy");
   const loader = useLoaderData();
   const { user } = useContext(AuthContext);
   const { email } = user;
@@ -23,6 +25,10 @@ const UpdateToy = () => {
     const newValue = e.target.value;
     setValue(newValue);
   };
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   const getdata = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -54,7 +60,7 @@ const UpdateToy = () => {
       confirmButtonText: "Yes, Update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://toy-server-94.onrender.com/Update${loader._id}`, {
+        fetch(`https://toys-server-nu.vercel.app/Update${loader._id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",

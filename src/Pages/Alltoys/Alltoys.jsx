@@ -2,8 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import moment from "moment/moment";
+import useTittle from "../../hooks";
 
 const ToyDetails = () => {
+  useTittle("Toy Details");
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   const { user } = useContext(AuthContext);
   console.log(user);
   // const [review, ] = useState([]);

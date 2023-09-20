@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useTittle from "../../hooks";
 
 const AddToy = () => {
+  useTittle("Add Toy");
   const { user } = useContext(AuthContext);
   const { email } = user;
   const [value, setValue] = useState(10); // Initial value for the range input
@@ -42,6 +44,7 @@ const AddToy = () => {
       Quantity: Quantity,
       email: email,
       Image_URL: Image_URL,
+      SellerName: user.name,
     };
     fetch(`https://toys-server-nu.vercel.app/Addtoy`, {
       method: "POST",
