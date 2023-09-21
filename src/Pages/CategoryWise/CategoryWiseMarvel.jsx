@@ -20,7 +20,7 @@ const CategoryWIseMarvel = () => {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `https://toys-server-nu.vercel.app/Dc?page=${pagenum}&limit=${itemPerpage}`
+        `https://toys-server-nu.vercel.app/Marvel?page=${pagenum}&limit=${itemPerpage}`
       );
       const data = await response.json();
       setProduct(data);

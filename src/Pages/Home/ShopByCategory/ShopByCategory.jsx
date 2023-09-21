@@ -2,7 +2,7 @@ import { data } from "autoprefixer";
 import React, { useContext, useEffect, useState } from "react";
 import Lottie from "lottie-react";
 import animation from "../../../assets/VbbjN4vsXz.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 const ShopByCategory = () => {
@@ -21,6 +21,7 @@ const ShopByCategory = () => {
   const [title, setTittle] = useState("");
   const [toys, setTOys] = useState([]);
   const [isloadin, setLoading] = useState(true);
+  const navigation = useNavigation();
   //   const [hiddem,setHidden] = useState
   // const Alltoys = () => {};
   useEffect(() => {
@@ -116,7 +117,7 @@ const ShopByCategory = () => {
           Featured Toys
           <hr className="outline-dotted w-6/12 mx-auto mt-4 outline-4" />
         </h1>
-        {isloadin ? (
+        {navigation.state === "loading" ? (
           <>
             <Lottie className="w-32 mx-auto mt-11" animationData={animation} />
           </>

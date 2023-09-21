@@ -235,8 +235,8 @@ const ToyDetails = () => {
             Ask Question
           </div>
           <div className="collapse-content border border-red-500">
-            <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
-              <div className="card-body">
+            <div className="card flex-shrink-0 w-full  shadow-2xl ">
+              <div className="card-body flex justify-center items-center">
                 <div className="form-control gap-2 flex flex-row w-full ">
                   <div className="w-full">
                     <input
@@ -264,9 +264,7 @@ const ToyDetails = () => {
                   ></textarea>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn bg-red-500 text-white">
-                    SEND QUESTION
-                  </button>
+                  <button className="btn bg-red-500 text-white">Asq now</button>
                 </div>
               </div>
             </div>

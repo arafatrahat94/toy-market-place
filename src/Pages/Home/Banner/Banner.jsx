@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import Lottie from "lottie-react";
 import animation from "../../../assets/VbbjN4vsXz.json";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { useNavigation } from "react-router-dom";
 const Banner = () => {
   const [bannerImage, SetBannerImage] = useState([]);
   useEffect(() => {
@@ -19,7 +20,7 @@ const Banner = () => {
         SetBannerImage(data);
       });
   }, []);
-
+  const navigation = useNavigation();
   const [isloading, Setisloading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -54,7 +55,7 @@ const Banner = () => {
         </div>
 
         <div className="lg:w-[500px] lg:relative lg:left-20 z-0">
-          {isloading ? (
+          {navigation.state === "loading" ? (
             <>
               <Lottie
                 className="w-32 h-[50vh] my-10 mx-auto"
