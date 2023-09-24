@@ -54,7 +54,7 @@ const Banner = () => {
           </div>
         </div>
 
-        <div className="lg:w-[500px] lg:relative lg:left-20 z-0">
+        <div className="lg:w-[500px] lg:relative -right-5 z-0">
           {navigation.state === "loading" ? (
             <>
               <Lottie

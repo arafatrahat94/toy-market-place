@@ -37,6 +37,29 @@ const ViewAll = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
   console.log(product);
+  const handleChange = (event) => {
+    const value = event.target.value;
+    if (value === "Highest Price to Lowest") {
+      fetch(
+        `https://toys-server-nu.vercel.app/AlltoyP?page=${pagenum}&limit=${itemPerpage}`
+      )
+        .then((res) => res.json())
+        .then((data) => setProduct(data));
+    } else if (value === "Lowest Price to Highest") {
+      fetch(
+        `https://toys-server-nu.vercel.app/AlltoyL?page=${pagenum}&limit=${itemPerpage}`
+      )
+        .then((res) => res.json())
+        .then((data) => setProduct(data));
+    } else {
+      fetch(
+        `https://toys-server-nu.vercel.app/Toys?page=${pagenum}&limit=${itemPerpage}`
+      )
+        .then((res) => res.json())
+        .then((data) => setProduct(data));
+    }
+  };
+  // AlltoyP
   return (
     <div className="min-h-screen">
       {loading ? (
@@ -49,6 +72,20 @@ const ViewAll = () => {
       ) : (
         <>
           <div>
+            <form className="form-control  mx-4">
+              <select
+                name="Category"
+                onChange={handleChange}
+                className="select select-secondary lg:ms-6 lg:w-[210px] border-[#D71317] my-2 w-5/12"
+              >
+                <option disabled selected>
+                  Filter
+                </option>
+                <option>Lowest Price to Highest</option>
+                <option>Highest Price to Lowest</option>
+                {/* <option>C#</option> */}
+              </select>
+            </form>
             <div className="w-11/12 mx-auto bg-white rounded-lg p-2 ring ring-red-600 bg-opacity-40 overflow-x-auto">
               <table className="table">
                 {/* head */}
